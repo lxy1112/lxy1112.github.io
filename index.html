@@ -1,153 +1,310 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>我的个人主页</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>My Fancy Portfolio</title>
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
+    /* ========== 主题色 & 全局 ========== */
+    :root {
+      --primary: #4A90E2;
+      --accent: #50E3C2;
+      --bg: #1E1E2F;
+      --fg: #F5F5F7;
+      --transition: 0.3s ease;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      margin: 0;
-      font-family: "Segoe UI", Tahoma, sans-serif;
-      background: #f5f5f5;
-      color: #333;
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      overflow-x: hidden;
     }
+    a { text-decoration: none; color: inherit; }
+    img, video { display: block; max-width: 100%; }
+
+    /* ========== 顶部导航 ========== */
     header {
-      background: #4CAF50;
-      color: #fff;
-      padding: 40px 20px;
-      text-align: center;
+      position: fixed; top: 0; left: 0; right: 0;
+      background: rgba(30,30,47,0.85);
+      backdrop-filter: blur(8px);
+      z-index: 100;
     }
-    header h1 {
-      margin: 0;
-      font-size: 2.5em;
+    .nav-container {
+      max-width: 960px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.75em 1em;
     }
-    nav {
-      background: #fff;
-      padding: 10px 20px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      position: sticky;
-      top: 0;
-    }
-    nav a {
-      margin-right: 15px;
-      color: #4CAF50;
-      text-decoration: none;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    section {
-      padding: 40px 20px;
-    }
-    section h2 {
-      border-bottom: 2px solid #4CAF50;
-      display: inline-block;
-      padding-bottom: 5px;
-    }
-    /* 照片墙 */
-    .gallery {
+    .logo { font-size: 1.5em; font-weight: 700; color: var(--accent); }
+    nav ul {
+      list-style: none;
       display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 20px;
+      gap: 1em;
     }
-    .gallery img {
-      width: calc(33.333% - 10px);
-      object-fit: cover;
+    nav li {
+      cursor: pointer;
+      padding: 0.5em 0.75em;
       border-radius: 4px;
+      transition: background var(--transition);
     }
-    /* 视频区 */
-    .videos {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      margin-top: 20px;
+    nav li:hover, nav li.active {
+      background: var(--accent);
+      color: var(--bg);
     }
-    .videos video {
-      width: calc(50% - 20px);
-      border-radius: 4px;
-      background: #000;
+    /* 移动端汉堡 */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      cursor: pointer;
     }
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: #fff;
-      color: #777;
-      font-size: 0.9em;
-      border-top: 1px solid #e5e5e5;
+    .hamburger div {
+      width: 25px; height: 3px; background: var(--fg);
+      transition: transform var(--transition);
     }
     @media (max-width: 768px) {
-      .gallery img, .videos video {
-        width: 100%;
+      nav ul { 
+        position: fixed; top: 60px; right: -100%;
+        background: rgba(30,30,47,0.95);
+        flex-direction: column; width: 60vw;
+        padding: 1em; gap: 1em;
+        height: calc(100vh - 60px);
+        transition: right var(--transition);
       }
+      nav ul.open { right: 0; }
+      .hamburger { display: flex; }
+    }
+
+    /* ========== 各区块 Section ========== */
+    main {
+      padding-top: 80px;
+      max-width: 960px; margin: 0 auto;
+    }
+    section {
+      display: none;
+      animation: fadeIn 0.5s;
+    }
+    section.active {
+      display: block;
+    }
+    h2 {
+      font-weight: 500;
+      margin-bottom: 0.5em;
+      position: relative;
+      display: inline-block;
+    }
+    h2::after {
+      content: '';
+      position: absolute; left: 0; bottom: -5px;
+      width: 50px; height: 3px;
+      background: var(--primary);
+    }
+
+    /* ========== ABOUT 区块 ========== */
+    #about p {
+      line-height: 1.6;
+      margin-top: 1em;
+    }
+
+    /* ========== GALLERY 照片墙 ========== */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 10px;
+      margin-top: 1em;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    }
+
+    /* ========== VIDEOS 区块 ========== */
+    .videos {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+      margin-top: 1em;
+    }
+    .videos video {
+      border-radius: 6px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.6);
+    }
+
+    /* ========== CONTACT 区块 ========== */
+    #contact ul {
+      list-style: none;
+      margin-top: 1em;
+      display: flex;
+      gap: 1em;
+    }
+    #contact a {
+      display: inline-block;
+      padding: 0.5em 1em;
+      background: var(--accent);
+      color: var(--bg);
+      border-radius: 4px;
+      transition: background var(--transition);
+    }
+    #contact a:hover {
+      background: var(--primary);
+    }
+
+    /* ========== LIGHTBOX ========== */
+    .lightbox {
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.85);
+      display: flex; align-items: center; justify-content: center;
+      z-index: 200; opacity: 0; pointer-events: none;
+      transition: opacity var(--transition);
+    }
+    .lightbox.open {
+      opacity: 1; pointer-events: all;
+    }
+    .lightbox img {
+      max-width: 90%; max-height: 90%;
+      border-radius: 6px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.7);
+    }
+    .lightbox .close {
+      position: absolute; top: 20px; right: 20px;
+      font-size: 2em; color: #fff; cursor: pointer;
+    }
+
+    /* ========== 动画 ========== */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
 
-  <!-- 头部 -->
+  <!-- header + nav -->
   <header>
-    <h1>你好，我是张晓雨</h1>
-    <p>欢迎来到我的个人主页</p>
+    <div class="nav-container">
+      <div class="logo">MyPortfolio</div>
+      <nav>
+        <ul id="menu">
+          <li data-target="about" class="active">About</li>
+          <li data-target="gallery">Photos</li>
+          <li data-target="videos">Videos</li>
+          <li data-target="contact">Contact</li>
+        </ul>
+      </nav>
+      <div class="hamburger" id="hamburger">
+        <div></div><div></div><div></div>
+      </div>
+    </div>
   </header>
 
-  <!-- 导航 -->
-  <nav>
-    <a href="#about">关于我</a>
-    <a href="#gallery">照片</a>
-    <a href="#videos">视频</a>
-    <a href="#contact">联系我</a>
-  </nav>
+  <!-- 主内容 -->
+  <main>
+    <!-- ABOUT -->
+    <section id="about" class="active">
+      <h2>About Me</h2>
+      <p>你好，我是 <strong>张晓雨</strong>，一名热爱摄影与视频创作的爱好者。我喜欢捕捉日常生活的美好瞬间，也欢迎你通过下面的联系方式与我交流。</p>
+    </section>
 
-  <!-- 关于我 -->
-  <section id="about">
-    <h2>关于我</h2>
-    <p>
-      大家好，我叫 <strong>张晓雨</strong>，是一名摄影爱好者和内容创作者。
-      在这里我会分享一些我的自拍照片和视频，同时也欢迎大家通过邮箱或社交平台与我交流。
-    </p>
-  </section>
+    <!-- GALLERY -->
+    <section id="gallery">
+      <h2>Photo Gallery</h2>
+      <div class="gallery">
+        <img src="photos/photo1.JPEG" alt="自拍1">
+        <img src="photos/photo2" alt="自拍2">
+        <img src="photos/photo3" alt="自拍3">
+        <img src="photos/photo4" alt="自拍4">
+        <img src="photos/photo5" alt="自拍5">
+        <img src="photos/photo6" alt="自拍6">
+        <!-- 继续添加图片 -->
+      </div>
+    </section>
 
-  <!-- 照片墙 -->
-  <section id="gallery">
-    <h2>照片墙</h2>
-    <div class="gallery">
-      <img src="photos/photo1.JPEG" alt="自拍照1" />
-      <img src="photos/photo2" alt="自拍照2" />
-      <img src="photos/photo3" alt="自拍照3" />
-      <img src="photos/photo4" alt="自拍照4" />
-      <img src="photos/photo5" alt="自拍照5" />
-      <img src="photos/photo6" alt="自拍照6" />
-      <!-- 按需添加更多 -->
-    </div>
-  </section>
+    <!-- VIDEOS -->
+    <section id="videos">
+      <h2>Video Clips</h2>
+      <div class="videos">
+        <video src="video/video1.mp4" controls poster="videos/poster1.jpg"></video>
+        <video src="video/video2.mp4" controls poster="videos/poster2.jpg"></video>
+        <!-- 继续添加视频 -->
+      </div>
+    </section>
 
-  <!-- 视频集 -->
-  <section id="videos">
-    <h2>视频集</h2>
-    <div class="videos">
-      <video src="video/video1.mp4" controls poster="videos/poster1.jpg"></video>
-      <video src="video/video2.mp4" controls poster="videos/poster2.jpg"></video>
-      <!-- 按需添加更多 -->
-    </div>
-  </section>
+    <!-- CONTACT -->
+    <section id="contact">
+      <h2>Contact Me</h2>
+      <ul>
+        <li><a href="mailto:youremail@example.com">Email</a></li>
+        <li><a href="https://github.com/YourUsername" target="_blank">GitHub</a></li>
+        <!-- 更多社交 -->
+      </ul>
+    </section>
+  </main>
 
-  <!-- 联系方式 -->
-  <section id="contact">
-    <h2>联系我</h2>
-    <p>邮箱：2315654400@qq.com</p>
-    <p>GitHub：<a href="https://github.com/YourUsername" target="_blank">github.com/lxy1112</a></p>
-    <!-- 可添加更多社交链接 -->
-  </section>
+  <!-- Lightbox（图片放大层） -->
+  <div class="lightbox" id="lightbox">
+    <span class="close" id="lightbox-close">&times;</span>
+    <img src="" alt="Preview">
+  </div>
 
-  <!-- 页脚 -->
-  <footer>
-    © 2023 YourName. All rights reserved.
-  </footer>
+  <!-- 脚本：路由 + 抽屉菜单 + Lightbox -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const menuItems = document.querySelectorAll('#menu li');
+      const sections  = document.querySelectorAll('main section');
+      const hamburger = document.getElementById('hamburger');
+      const menu      = document.getElementById('menu');
 
+      // 点击菜单切换区块
+      menuItems.forEach(item => {
+        item.addEventListener('click', () => {
+          // 更新菜单高亮
+          menuItems.forEach(i=>i.classList.remove('active'));
+          item.classList.add('active');
+          // 切换区块
+          const target = item.dataset.target;
+          sections.forEach(sec => {
+            sec.id === target
+              ? sec.classList.add('active')
+              : sec.classList.remove('active');
+          });
+          // 如果移动端打开，收起菜单
+          if (menu.classList.contains('open')) {
+            menu.classList.remove('open');
+          }
+        });
+      });
+
+      // 移动端汉堡按钮
+      hamburger.addEventListener('click', () => {
+        menu.classList.toggle('open');
+      });
+
+      // Lightbox：图片点击放大
+      const lightbox    = document.getElementById('lightbox');
+      const lbImage     = lightbox.querySelector('img');
+      const lbCloseBtn  = document.getElementById('lightbox-close');
+      document.querySelectorAll('.gallery img').forEach(img => {
+        img.addEventListener('click', () => {
+          lbImage.src = img.src;
+          lightbox.classList.add('open');
+        });
+      });
+      // 关闭 Lightbox
+      [lightbox, lbCloseBtn].forEach(el => {
+        el.addEventListener('click', e => {
+          e.stopPropagation();
+          lightbox.classList.remove('open');
+        });
+      });
+    });
+  </script>
 </body>
-
 </html>
-
-
-
