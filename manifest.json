@@ -1,7 +1,6 @@
 {
-  "name": "My Fancy Portfolio",
-  "short_name": "Portfolio",
-  "description": "个人作品集：摄影、视频、博客与联系方式。",
+  "name": "张晓雨的作品集",
+  "short_name": "作品集",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#4A90E2",
@@ -17,5 +16,6 @@
       "sizes": "512x512",
       "type": "image/png"
     }
-  ]
+  ],
+  "scope": "./"
 }
