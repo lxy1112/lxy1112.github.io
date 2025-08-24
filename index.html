@@ -5,14 +5,20 @@
   <title>张晓雨的作品集</title>
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <meta name="description" content="个人作品集：摄影、视频、博客与联系方式。Dark/Light 模式，PWA 支持，博客搜索。">
+
   <link rel="icon" href="favicon-32x32.png" sizes="32x32">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#4A90E2">
+
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap"
+    rel="stylesheet"
+  >
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
   <a class="skip-link" href="#main-content">跳到主要内容</a>
 
@@ -21,16 +27,38 @@
       <div class="logo">张晓雨</div>
       <nav aria-label="主导航">
         <ul id="menu">
-          <li data-target="about" class="active" aria-current="page">About</li>
-          <li data-target="gallery">Photos</li>
-          <li data-target="videos">Videos</li>
-          <li data-target="blog">Blog</li>
-          <li data-target="contact">Contact</li>
+          <li>
+            <a href="#about" class="active" aria-current="page">About</a>
+          </li>
+          <li>
+            <a href="#gallery">Photos</a>
+          </li>
+          <li>
+            <a href="#videos">Videos</a>
+          </li>
+          <li>
+            <a href="#blog">Blog</a>
+          </li>
+          <li>
+            <a href="#contact">Contact</a>
+          </li>
         </ul>
       </nav>
       <div class="controls">
-        <button id="theme-toggle" class="theme-toggle" aria-pressed="false" title="切换主题">🌓</button>
-        <button id="hamburger" class="hamburger" aria-label="打开菜单" aria-expanded="false">
+        <button
+          id="theme-toggle"
+          class="theme-toggle"
+          aria-pressed="false"
+          title="切换主题"
+        >
+          🌓
+        </button>
+        <button
+          id="hamburger"
+          class="hamburger"
+          aria-label="打开/关闭菜单"
+          aria-expanded="false"
+        >
           <span></span><span></span><span></span>
         </button>
       </div>
@@ -39,49 +67,81 @@
 
   <main id="main-content" role="main">
     <!-- ABOUT -->
-    <section id="about" class="active" aria-labelledby="about-title">
-      <!-- 封面图 -->
-    <div class="about-hero">
-      <picture>
-        <source media="(min-width:800px)" srcset="photos/photo8 1x, photos/photo8 2x ">
-        <img src="photos/photo16"
-             alt="张晓雨的自拍"
-             loading="lazy" decoding="async">
-      </picture>
-    </div>
-     <!-- 文本内容 -->
-    <div class="about-content">
-      <h2 id="about-title">About Me</h2>
-      <p>你好，我是 <strong>张晓雨</strong>，一名热爱摄影与视频创作的多媒体内容创作者。从青葱校园到走遍大江南北，我用镜头记录下每一次感动。</p>
-      <p>在过去的几年里，我：</p>
-      <ul class="about-highlights">
-        <li>参与 <strong>各种</strong> 旅拍项目</li>
-        <li>担任多次户外摄影沙龙主讲嘉宾</li>
-        <li>在个人博客发表了十余篇技术教程</li>
-      </ul>
-
-      <h3>技能 & 工具</h3>
-      <ul class="skills">
-        <li>摄影：风光 / 人像 / 夜景</li>
-        <li>后期：Lightroom, Photoshop</li>
-        <li>剪辑：Premiere Pro, DaVinci Resolve</li>
-        <li>前端：HTML, CSS, JavaScript</li>
-      </ul>
-
-      <h3>社交媒体</h3>
-      <div class="social">
-        <a href="https://instagram.com/yourname" target="_blank" rel="noopener" aria-label="Instagram">
-          <img src="icons/instagram.svg" alt="Instagram">
-        </a>
-        <a href="https://www.youtube.com/yourchannel" target="_blank" rel="noopener" aria-label="YouTube">
-          <img src="icons/youtube.svg" alt="YouTube">
-        </a>
-        <a href="https://github.com/yourname" target="_blank" rel="noopener" aria-label="GitHub">
-          <img src="icons/github.svg" alt="GitHub">
-        </a>
+    <section
+      id="about"
+      class="active"
+      aria-labelledby="about-title"
+    >
+      <div class="about-hero">
+        <picture>
+          <source
+            media="(min-width: 800px)"
+            srcset="
+              photos/photo8.jpg 1x,
+              photos/photo8@2x.jpg 2x
+            "
+            sizes="(min-width: 800px) 100vw, 100vw"
+          >
+          <img
+            src="photos/photo16.jpg"
+            alt="张晓雨的自拍"
+            loading="lazy"
+            decoding="async"
+            width="600"
+            height="400"
+          >
+        </picture>
       </div>
-    </div>
-  
+      <div class="about-content">
+        <h2 id="about-title">About Me</h2>
+        <p>
+          你好，我是 <strong>张晓雨</strong>，一名热爱摄影与视频创作的多媒体内容创作者。
+          从青葱校园到走遍大江南北，我用镜头记录下每一次感动。
+        </p>
+        <p>在过去的几年里，我：</p>
+        <ul class="about-highlights">
+          <li>参与 <strong>各种</strong> 旅拍项目</li>
+          <li>担任多次户外摄影沙龙主讲嘉宾</li>
+          <li>在个人博客发表了十余篇技术教程</li>
+        </ul>
+
+        <h3>技能 & 工具</h3>
+        <ul class="skills">
+          <li>摄影：风光 / 人像 / 夜景</li>
+          <li>后期：Lightroom, Photoshop</li>
+          <li>剪辑：Premiere Pro, DaVinci Resolve</li>
+          <li>前端：HTML, CSS, JavaScript</li>
+        </ul>
+
+        <h3>社交媒体</h3>
+        <div class="social">
+          <a
+            href="https://instagram.com/yourname"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+          >
+            <img src="icons/instagram.svg" alt="Instagram">
+          </a>
+          <a
+            href="https://www.youtube.com/yourchannel"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="YouTube"
+          >
+            <img src="icons/youtube.svg" alt="YouTube">
+          </a>
+          <a
+            href="https://github.com/yourname"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+          >
+            <img src="icons/github.svg" alt="GitHub">
+          </a>
+        </div>
+      </div>
+    </section>
 
     <!-- GALLERY -->
     <section id="gallery" aria-labelledby="gallery-title">
@@ -99,7 +159,12 @@
     <section id="blog" aria-labelledby="blog-title">
       <h2 id="blog-title">Blog</h2>
       <div class="search-box">
-        <input type="text" id="search-input" placeholder="搜索文章…" aria-label="搜索文章">
+        <input
+          type="text"
+          id="search-input"
+          placeholder="搜索文章…"
+          aria-label="搜索文章"
+        >
       </div>
       <ul class="posts" id="posts-list"></ul>
     </section>
@@ -107,7 +172,11 @@
     <!-- CONTACT -->
     <section id="contact" aria-labelledby="contact-title">
       <h2 id="contact-title">Contact Me</h2>
-      <form action="https://formspree.io/f/your-form-id" method="POST" aria-label="联系表单">
+      <form
+        action="https://formspree.io/f/your-form-id"
+        method="POST"
+        aria-label="联系表单"
+      >
         <div class="form-group">
           <label for="name">你的名字</label>
           <input id="name" type="text" name="name" required>
@@ -126,8 +195,18 @@
   </main>
 
   <!-- Lightbox -->
-  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="图片预览">
-    <button class="lb-close" id="lb-close" aria-label="关闭">&times;</button>
+  <div
+    class="lightbox"
+    id="lightbox"
+    role="dialog"
+    aria-modal="true"
+    aria-label="图片预览"
+  >
+    <button
+      class="lb-close"
+      id="lb-close"
+      aria-label="关闭"
+    >&times;</button>
     <img src="" alt="" id="lb-image">
   </div>
 
@@ -135,13 +214,10 @@
   <button id="back-to-top" aria-label="返回顶部">↑</button>
 
   <!-- Fuse.js & 主脚本 -->
-  <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2/dist/fuse.min.js" defer></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2/dist/fuse.min.js"
+    defer
+  ></script>
   <script src="script.js" defer></script>
 </body>
 </html>
-
-
-
-
-
-
