@@ -193,3 +193,84 @@ button[type="submit"]:hover { background:var(--primary); }
   from { opacity:0; transform:translateY(20px); }
   to   { opacity:1; transform:translateY(0); }
 }
+
+
+/* ======== About Section ======== */
+#about {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+  margin-bottom: 2em;
+}
+.about-hero img {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+}
+.about-content h2,
+.about-content h3 {
+  margin-top: 0;
+}
+.about-highlights,
+.skills {
+  list-style: none;
+  margin: 0.5em 0 1em;
+  padding: 0;
+}
+.about-highlights li {
+  margin-bottom: 0.5em;
+  padding-left: 1.2em;
+  position: relative;
+}
+.about-highlights li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  color: var(--primary);
+}
+.skills {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px,1fr));
+  gap: 0.5em;
+}
+.skills li {
+  padding-left: 1.2em;
+  position: relative;
+}
+.skills li::before {
+  content: "●";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-size: 0.6em;
+  top: 0.4em;
+}
+.social {
+  display: flex;
+  gap: 1em;
+  margin-top: 0.5em;
+}
+.social img {
+  width: 32px;
+  height: 32px;
+  filter: grayscale(100%);
+  transition: filter var(--transition);
+}
+.social img:hover {
+  filter: none;
+}
+
+/* 桌面端两栏布局 */
+@media (min-width: 768px) {
+  #about {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  .about-hero,
+  .about-content {
+    flex: 1;
+  }
+  .about-hero {
+    max-width: 45%;
+  }
+}
