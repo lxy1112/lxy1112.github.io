@@ -5,46 +5,15 @@
   <title>张晓雨的作品集</title>
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <meta name="description" content="个人作品集：摄影、视频、博客与联系方式。Dark/Light 模式，PWA 支持，博客搜索。">
-  <meta name="keywords" content="个人网站, 作品集, 摄影, 视频, 博客">
-  <!-- Open Graph -->
-  <meta property="og:type"        content="website">
-  <meta property="og:title"       content="张晓雨的作品集">
-  <meta property="og:description" content="个人作品集：摄影、视频、博客与联系方式。">
-  <meta property="og:image"       content="https://yourdomain.com/og-image.jpg">
-  <meta property="og:url"         content="https://yourdomain.com/">
-  <!-- Twitter Card -->
-  <meta name="twitter:card"        content="summary_large_image">
-  <meta name="twitter:title"       content="张晓雨的作品集">
-  <meta name="twitter:description" content="个人作品集：摄影、视频、博客与联系方式。">
-  <meta name="twitter:image"       content="https://yourdomain.com/og-image.jpg">
-
-  <!-- Favicon & Touch Icon -->
-  <link rel="icon"               href="/favicon-32x32.png" sizes="32x32">
-  <link rel="apple-touch-icon"   href="/apple-touch-icon.png">
-
-  <!-- PWA Manifest -->
+  <link rel="icon" href="favicon-32x32.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#4A90E2">
-
-  <!-- 预连接 Google Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-
-  <!-- External CSS -->
   <link rel="stylesheet" href="styles.css">
-
-  <!-- 文章结构化数据（如果是首页，可放网站信息；文章页放 BlogPosting） -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "张晓雨的作品集",
-    "url": "https://yourdomain.com/"
-  }
-  </script>
 </head>
 <body>
-  <!-- 跳过链接 -->
   <a class="skip-link" href="#main-content">跳到主要内容</a>
 
   <header role="banner">
@@ -78,42 +47,22 @@
     <!-- GALLERY -->
     <section id="gallery" aria-labelledby="gallery-title">
       <h2 id="gallery-title">Photo Gallery</h2>
-      <div class="gallery">
-        <!-- 示例一张图片，实际可循环多张 -->
-        <picture>
-          <source media="(min-width:800px)" srcset="photos/photo1-large.jpg 1x, photos/photo1-x2.jpg 2x">
-          <source media="(max-width:799px)" srcset="photos/photo1-small.jpg">
-          <img src="photos/photo1-small.jpg"
-               alt="山间日出，金色光辉映红云海"
-               loading="lazy"
-               decoding="async">
-        </picture>
-        <!-- 其他图片同理 -->
-      </div>
+      <div class="gallery"></div>
     </section>
 
     <!-- VIDEOS -->
     <section id="videos" aria-labelledby="videos-title">
       <h2 id="videos-title">Video Clips</h2>
-      <div class="videos">
-        <video src="video/video1.mp4"
-               poster="photos/photo3-small.jpg"
-               controls
-               preload="metadata"
-               loading="lazy"></video>
-        <!-- 其他 video 同理 -->
-      </div>
+      <div class="videos"></div>
     </section>
 
     <!-- BLOG -->
     <section id="blog" aria-labelledby="blog-title">
       <h2 id="blog-title">Blog</h2>
       <div class="search-box">
-        <input type="text" id="search-input" placeholder="搜索文章…" aria-label="搜索文章" />
+        <input type="text" id="search-input" placeholder="搜索文章…" aria-label="搜索文章">
       </div>
-      <ul class="posts" id="posts-list">
-        <!-- 由 JS 动态渲染 -->
-      </ul>
+      <ul class="posts" id="posts-list"></ul>
     </section>
 
     <!-- CONTACT -->
@@ -146,7 +95,7 @@
   <!-- 返回顶部 -->
   <button id="back-to-top" aria-label="返回顶部">↑</button>
 
-  <!-- Fuse.js & External JS -->
+  <!-- Fuse.js & 主脚本 -->
   <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2/dist/fuse.min.js" defer></script>
   <script src="script.js" defer></script>
 </body>
