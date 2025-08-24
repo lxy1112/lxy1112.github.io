@@ -40,9 +40,51 @@
   <main id="main-content" role="main">
     <!-- ABOUT -->
     <section id="about" class="active" aria-labelledby="about-title">
+      <!-- 封面图 -->
+    <div class="about-hero">
+      <picture>
+        <source media="(min-width:800px)" srcset="photos/photo8 1x, photos/photo8 2x">
+        <img src="photos/photo8"
+             alt="张晓雨的自拍"
+             loading="lazy" decoding="async">
+      </picture>
+    </div>
       <h2 id="about-title">About Me</h2>
       <p>你好，我是 <strong>张晓雨</strong>，一名热爱摄影与视频创作的爱好者。我喜欢捕捉日常生活的美好瞬间，也欢迎你通过下面的联系方式与我交流。</p>
     </section>
+     <!-- 文本内容 -->
+    <div class="about-content">
+      <h2 id="about-title">About Me</h2>
+      <p>你好，我是 <strong>张晓雨</strong>，一名热爱摄影与视频创作的多媒体内容创作者。从青葱校园到走遍大江南北，我用镜头记录下每一次感动。</p>
+      <p>在过去的几年里，我：</p>
+      <ul class="about-highlights">
+        <li>参与 <strong>各种</strong> 旅拍项目</li>
+        <li>担任多次户外摄影沙龙主讲嘉宾</li>
+        <li>在个人博客发表了十余篇技术教程</li>
+      </ul>
+
+      <h3>技能 & 工具</h3>
+      <ul class="skills">
+        <li>摄影：风光 / 人像 / 夜景</li>
+        <li>后期：Lightroom, Photoshop</li>
+        <li>剪辑：Premiere Pro, DaVinci Resolve</li>
+        <li>前端：HTML, CSS, JavaScript</li>
+      </ul>
+
+      <h3>社交媒体</h3>
+      <div class="social">
+        <a href="https://instagram.com/yourname" target="_blank" rel="noopener" aria-label="Instagram">
+          <img src="icons/instagram.svg" alt="Instagram">
+        </a>
+        <a href="https://www.youtube.com/yourchannel" target="_blank" rel="noopener" aria-label="YouTube">
+          <img src="icons/youtube.svg" alt="YouTube">
+        </a>
+        <a href="https://github.com/yourname" target="_blank" rel="noopener" aria-label="GitHub">
+          <img src="icons/github.svg" alt="GitHub">
+        </a>
+      </div>
+    </div>
+  </section>
 
     <!-- GALLERY -->
     <section id="gallery" aria-labelledby="gallery-title">
@@ -100,3 +142,4 @@
   <script src="script.js" defer></script>
 </body>
 </html>
+
