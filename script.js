@@ -1,4 +1,3 @@
-
 // ==== 数据区 ====
 const galleryData = [
   {
