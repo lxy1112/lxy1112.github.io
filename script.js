@@ -1,11 +1,3 @@
-document.addEventListener('DOMContentLoaded', () => {
-  // 如果不是首页路径，就移除 About
-  if (location.pathname !== '/' && location.pathname.indexOf('index.html') === -1) {
-    const about = document.getElementById('about');
-    if (about) about.remove();
-  }
-});
-
 
 // ==== 数据区 ====
 const galleryData = [
